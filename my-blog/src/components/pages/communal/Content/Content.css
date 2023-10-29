@@ -1,0 +1,21 @@
+.rowWeight {
+    display: inline;
+}
+.col {
+    margin: 20px auto;
+    border: solid rgb(212, 212, 213) 1px;
+}
+.firstRow {
+    margin: 10px;
+}
+.secondRow {
+    height: 8vh;
+}
+.secondRow .ant-col {
+    margin: 20px auto;
+    border: solid rgb(212, 212, 213) 1px;
+}
+.contentArticle {
+    margin: 10px auto;
+    width: 90%;
+}
