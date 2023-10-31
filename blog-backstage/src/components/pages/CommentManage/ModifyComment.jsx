@@ -6,6 +6,7 @@ import MiddleContent from "../../communal/MiddleContent/MiddleContent";
 import BottomFooter from "../../communal/BottomFooter/BottomFooter";
 import { Button, Space, Modal } from "antd";
 import axios from "axios";
+import baseUrl from "../../../axios/baseUrl";
 
 const ModifyComment = () => {
     const [isModalOpen, setIsModalOpen] = useState(false); //确认删除提示框
@@ -16,7 +17,7 @@ const ModifyComment = () => {
 
     const getData = () => {
         axios({
-            url: "http://127.0.0.1:3007/api/allremark",
+            url: `${baseUrl}/allremark`,
             method: "get",
         })
             .then((res) => {
@@ -46,7 +47,7 @@ const ModifyComment = () => {
 
     const handleDeleteClick = (id) => {
         axios({
-            url: `http://127.0.0.1:3007/api/deleteremark/${id}`,
+            url: `${baseUrl}/deleteremark/${id}`,
             method: "get",
         })
             .then((res) => {

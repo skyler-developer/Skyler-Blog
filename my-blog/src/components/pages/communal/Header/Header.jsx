@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import baseUrl from "../UrlBase/UrlBase";
+import baseUrl from "../../../../axios/baseUrl";
+
 import { FloatButton } from "antd";
 import { Col, Row, Menu, Input } from "antd"; //格栅化、导航、输入框所需组件
 import {

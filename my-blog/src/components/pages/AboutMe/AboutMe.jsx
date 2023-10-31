@@ -9,7 +9,8 @@ import MyCard from "../communal/MyCard/MyCard";
 import RemarkAreas from "../communal/RemarkArea/RemarkAreas";
 import Footer from "../communal/Footer/Footer";
 import WeatherCard from "../communal/WeatherCard/WeatherCard";
-import baseUrl from "../communal/UrlBase/UrlBase";
+import baseUrl from "../../../axios/baseUrl";
+
 
 export default function AboutMe() {
     const [contentStr, setContentStr] = useState(" ");

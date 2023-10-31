@@ -2,7 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import { Button } from "antd"; //按钮
 import axios from "axios";
-
+import baseUrl from "../../../../axios/baseUrl";
 import MiddleContent from "../../../communal/MiddleContent/MiddleContent";
 import Edit from "../../../communal/Edit/Edit";
 import LeftHeader from "../../../communal/LeftHeader/LeftHeader";
@@ -12,8 +12,7 @@ const PageAboutMe = () => {
     const [text, setText] = React.useState(""); //编辑器中的纯文本内容
     const handleButtonClick = () => {
         axios({
-            url: "saveaboutme",
-            baseURL: "http://127.0.0.1:3007/api/",
+            url: `${baseUrl}/saveaboutme`,
             method: "post",
             data: {
                 aboutMeHtml: content,

@@ -58,7 +58,7 @@ router.post("/savearticle", function (req, res) {
 router.get("/article/:kind", function (req, res) {
     const kind = req.params.kind; // 从请求的 URL 参数中获取 kind 的值
 
-    const sqlFind = "SELECT * FROM article WHERE kind = ?";
+    const sqlFind = "select * from article where kind = ?";
     db.query(sqlFind, [kind], function (err, result) {
         if (err) {
             return res.send(err);
@@ -69,7 +69,7 @@ router.get("/article/:kind", function (req, res) {
 
 //获取全部文章信息
 router.get("/allarticle", function (req, res) {
-    const sqlFind = "SELECT * FROM article";
+    const sqlFind = "select * from article";
     db.query(sqlFind, function (err, result) {
         if (err) {
             return res.send(err);
@@ -193,7 +193,7 @@ router.post("/saveremark", function (req, res) {
 //获取关联文章评论信息
 router.get("/remark/:id", function (req, res) {
     const id = req.params.id;
-    const sqlFind = "SELECT * FROM REMARK WHERE relatedArticles = ?";
+    const sqlFind = "SELECT * FROM remark WHERE relatedArticles = ?";
     db.query(sqlFind, [id], function (err, result) {
         if (err) {
             return res.send(err);
@@ -227,7 +227,7 @@ router.get("/deleteremark/:id", function (req, res) {
 
 //获取地址信息
 router.get("/address", function (req, res) {
-    const sqlFind = "SELECT citymessage.name ,citymessage.adcode FROM cityMessage";
+    const sqlFind = "SELECT citymessage.name ,citymessage.adcode FROM citymessage";
     db.query(sqlFind, function (err, result) {
         if (err) {
             return res.send(err);

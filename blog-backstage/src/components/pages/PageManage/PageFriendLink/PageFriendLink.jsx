@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import { Layout, Button, Space, Input } from "antd";
 import axios from "axios";
+import baseUrl from "../../../../axios/baseUrl";
 import LeftHeader from "../../../communal/LeftHeader/LeftHeader";
 import BottomFooter from "../../../communal/BottomFooter/BottomFooter";
 import MiddleContent from "../../../communal/MiddleContent/MiddleContent";
@@ -21,7 +22,7 @@ const PageFriendLink = () => {
     let alertMessage; //警告框状态信息
     const fetchData = () => {
         axios({
-            url: "http://127.0.0.1:3007/api/getfriendlink",
+            url: `${baseUrl}/getfriendlink`,
             method: "get",
         })
             .then((res) => {
@@ -37,7 +38,7 @@ const PageFriendLink = () => {
     }, []);
     const handleClick = (item) => {
         axios({
-            url: "http://127.0.0.1:3007/api/deletefriendlink",
+            url: `${baseUrl}/deletefriendlink`,
             method: "get",
             params: {
                 id: item.id,
@@ -73,7 +74,7 @@ const PageFriendLink = () => {
 
     const handleAddClick = () => {
         axios({
-            url: "http://127.0.0.1:3007/api/addfriendlink",
+            url: `${baseUrl}/addfriendlink`,
             method: "post",
             data: {
                 name: content,
@@ -90,7 +91,7 @@ const PageFriendLink = () => {
 
     const handleMottoClick = () => {
         axios({
-            url: "http://127.0.0.1:3007/api/modifymotto",
+            url: `${baseUrl}/modifymotto`,
             method: "post",
             data: {
                 content: motto.content,

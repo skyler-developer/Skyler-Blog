@@ -10,7 +10,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import MyAlert from "../MyAlert/MyAlert";
 import Paging from "../Paging/Paging";
-import baseUrl from "../UrlBase/UrlBase";
+import baseUrl from "../../../../axios/baseUrl";
 
 const { TextArea } = Input;
 

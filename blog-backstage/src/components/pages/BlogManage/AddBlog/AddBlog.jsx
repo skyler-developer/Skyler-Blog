@@ -10,6 +10,7 @@ import { Input } from "antd"; //输入框
 import { Select } from "antd"; //选择器
 import { Button } from "antd"; //按钮
 import axios from "axios";
+import baseUrl from "../../../../axios/baseUrl";
 import { useLocation } from "react-router-dom";
 
 const AddBlog = () => {
@@ -36,7 +37,7 @@ const AddBlog = () => {
 
         if (modifyId != null) {
             axios({
-                url: `http://127.0.0.1:3007/api/blog/${modifyId}`,
+                url: `${baseUrl}/blog/${modifyId}`,
                 method: "get",
             })
                 .then((res) => {
@@ -89,8 +90,7 @@ const AddBlog = () => {
         }
         if (modifyId === null) {
             axios({
-                url: "savearticle",
-                baseURL: "http://127.0.0.1:3007/api/",
+                url: `${baseUrl}/savearticle`,
                 method: "post",
                 data: {
                     title: title,
@@ -133,7 +133,7 @@ const AddBlog = () => {
         } else {
             console.log("demo");
             axios({
-                url: `http://127.0.0.1:3007/api/modifyblog/${modifyId}`,
+                url: `${baseUrl}/modifyblog/${modifyId}`,
                 method: "post",
                 data: {
                     content: content,

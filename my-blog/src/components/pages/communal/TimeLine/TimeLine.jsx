@@ -2,11 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom"; //路由链接
 import { useEffect } from "react";
 import { useState } from "react";
-import { Col, Row } from "antd"; //antd栅格化布局组件
+import { Col } from "antd"; //antd栅格化布局组件
 import axios from "axios";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import "./TimeLine.css";
-import baseUrl from "../UrlBase/UrlBase";
+import baseUrl from "../../../../axios/baseUrl";
 
 const LinePot = () => {
     const [result, setResult] = useState(null);

@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom"; //路由链接
 import { Col } from "antd";
 import { Space, Tag } from "antd";
 import { TagsTwoTone } from "@ant-design/icons";
-import baseUrl from "../UrlBase/UrlBase";
+import baseUrl from "../../../../axios/baseUrl";
 
 import axios from "axios";
 const Footer = () => {

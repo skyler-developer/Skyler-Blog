@@ -5,6 +5,7 @@ import MiddleContent from "../../../communal/MiddleContent/MiddleContent";
 import Edit from "../../../communal/Edit/Edit";
 import BottomFooter from "../../../communal/BottomFooter/BottomFooter";
 import axios from "axios";
+import baseUrl from "../../../../axios/baseUrl";
 import { useNavigate } from "react-router-dom";
 
 const ModifyBlog = () => {
@@ -25,7 +26,7 @@ const ModifyBlog = () => {
     const getData = () => {
         console.log("demo24");
         axios({
-            url: "http://127.0.0.1:3007/api/allarticle",
+            url: `${baseUrl}/allarticle`,
             method: "get",
         })
             .then((res) => {
@@ -42,7 +43,7 @@ const ModifyBlog = () => {
 
     const handleDeleteClick = (id) => {
         axios({
-            url: `http://127.0.0.1:3007/api/deleteblog/${id}`,
+            url: `${baseUrl}/deleteblog/${id}`,
             method: "get",
         })
             .then((res) => {
@@ -84,9 +85,19 @@ const ModifyBlog = () => {
                                             fontSize: "1rem",
                                             color: "rgb(22, 119, 255)",
                                         }}>
-                                        <div style={{ margin: "0 1vw" }}>{item.title}</div>
-                                        <div style={{ margin: "0 1vw" }}> {item.kind}</div>
-                                        <div style={{ margin: "0 1vw" }}>{item.time}</div>
+                                        <div style={{ margin: "0 1vw" }}>
+                                            标题：{"\u00A0\u00A0\u00A0"}
+                                            {item.title}
+                                        </div>
+                                        <div style={{ margin: "0 1vw" }}>
+                                            {" "}
+                                            类型：{"\u00A0\u00A0\u00A0"}
+                                            {item.kind}
+                                        </div>
+                                        <div style={{ margin: "0 1vw" }}>
+                                            发布时间：{"\u00A0\u00A0\u00A0"}
+                                            {item.time}
+                                        </div>
                                         <Button
                                             type="primary"
                                             onClick={() => {

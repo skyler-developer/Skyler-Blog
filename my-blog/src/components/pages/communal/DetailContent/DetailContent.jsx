@@ -12,7 +12,7 @@ import BlinkLoop from "../BlinkLoop/BlinkLoop";
 import RemarkAreas from "../RemarkArea/RemarkAreas";
 import Footer from "../Footer/Footer";
 import WeatherCard from "../WeatherCard/WeatherCard";
-import baseUrl from "../UrlBase/UrlBase";
+import baseUrl from "../../../../axios/baseUrl";
 
 import "./DetailContent.css";
 import "prismjs/themes/prism-tomorrow.min.css";

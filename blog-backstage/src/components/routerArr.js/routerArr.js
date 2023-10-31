@@ -2,8 +2,6 @@ import { Navigate } from "react-router-dom";
 
 //导入博客管理组件
 import AddBlog from "../pages/BlogManage/AddBlog/AddBlog.jsx";
-import DeleteBlog from "../pages/BlogManage/DeleteBlog/DeleteBlog.jsx";
-import FindBlog from "../pages/BlogManage/FindBlog/FindBlog.jsx";
 import ModifyBlog from "../pages/BlogManage/ModifyBlog/ModifyBlog.jsx";
 
 //导入页面管理组件
@@ -27,14 +25,6 @@ const routerArr = [
     {
         path: "/blogmanage/addblog",
         element: <AddBlog />,
-    },
-    {
-        path: "/blogmanage/deleteblog",
-        element: <DeleteBlog />,
-    },
-    {
-        path: "/blogmanage/findblog",
-        element: <FindBlog />,
     },
     {
         path: "/blogmanage/modifyblog",

@@ -9,7 +9,7 @@ import axios from "axios";
 import { useState } from "react";
 import Footer from "../../communal/Footer/Footer";
 import { Col, Row } from "antd"; //antd栅格化布局组件
-import baseUrl from "../../communal/UrlBase/UrlBase";
+import baseUrl from "../../../../axios/baseUrl";
 
 const Note = () => {
     const [contentArray, setContentArray] = useState(null);

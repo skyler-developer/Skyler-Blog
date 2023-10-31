@@ -12,10 +12,9 @@ import BlinkLoop from "../communal/BlinkLoop/BlinkLoop";
 import Paging from "../communal/Paging/Paging";
 import Content from "../communal/Content/Content";
 import MyCard from "../communal/MyCard/MyCard";
-import { Button, Input, Select, Space, Spin } from "antd";
-import baseUrl from "../communal/UrlBase/UrlBase";
+import { Button, Input } from "antd";
+import baseUrl from "../../../axios/baseUrl";
 
-const { Search } = Input;
 const { TextArea } = Input;
 export default function Home() {
     const [contentArray, setContentArray] = useState(null);

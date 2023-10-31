@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Card, Space, message } from "antd";
+import { Card, Space } from "antd";
 import { Select } from "antd";
 import axios from "axios";
-import baseUrl from "../UrlBase/UrlBase";
+import baseUrl from "../../../../axios/baseUrl";
 
 const MySelect = ({ getWeatherMessage }) => {
     const [addressMessage, setAddressMessage] = useState(null);
@@ -40,7 +40,7 @@ const MySelect = ({ getWeatherMessage }) => {
             .catch((err) => {
                 console.log(err);
             });
-    }, []);
+    },[]);
 
     useEffect(() => {
         if (addressAdcode != null) {
