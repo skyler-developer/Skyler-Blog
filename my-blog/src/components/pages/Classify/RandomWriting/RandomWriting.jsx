@@ -9,7 +9,7 @@ import Content from "../../communal/Content/Content"; //导入文章内容组件
 import { Col, Row } from "antd"; //antd栅格化布局组件
 import Footer from "../../communal/Footer/Footer";
 import Paging from "../../communal/Paging/Paging";
-
+import baseUrl from "../../communal/UrlBase/UrlBase";
 
 const RandomWriting = () => {
     const [contentArray, setContentArray] = useState(null);
@@ -22,7 +22,7 @@ const RandomWriting = () => {
         async function getContent() {
             const content = await axios({
                 method: "get",
-                url: "http://127.0.0.1:3007/api/article/3",
+                url: `${baseUrl}/article/3`,
             });
             const contentArray = content.data;
             setContentArray(contentArray.reverse());
@@ -53,7 +53,7 @@ const RandomWriting = () => {
                     </Col>
                     <Col span={24} style={{ marginTop: "2vh" }}>
                         <Row>
-                                <Footer />
+                            <Footer />
                         </Row>
                     </Col>
                 </Row>

@@ -9,6 +9,7 @@ import Content from "../../communal/Content/Content"; //导入文章内容组件
 import { Col, Row } from "antd"; //antd栅格化布局组件
 import Footer from "../../communal/Footer/Footer";
 import Paging from "../../communal/Paging/Paging";
+import baseUrl from "../../communal/UrlBase/UrlBase";
 
 const TittleTattle = () => {
     const [contentArray, setContentArray] = useState(null);
@@ -21,7 +22,7 @@ const TittleTattle = () => {
         async function getContent() {
             const content = await axios({
                 method: "get",
-                url: "http://127.0.0.1:3007/api/article/2",
+                url: `${baseUrl}/article/2`,
             });
             const contentArray = content.data;
             setContentArray(contentArray.reverse());

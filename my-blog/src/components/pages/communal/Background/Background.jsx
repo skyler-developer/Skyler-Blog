@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 
 import { debounce } from "lodash";
 const imgUrl = [
-    "https://s2.loli.net/2023/10/29/5PQhYx8WgmfsVi2.webp", //图片一，最左侧
+    "https://s2.loli.net/2023/10/31/8gsyzwDRTiu2KB4.webp", //图片一，最左侧
     "https://s2.loli.net/2023/10/29/HUfqIvRj2Vt13Xe.webp", //图片二，中间
     "https://s2.loli.net/2023/10/29/FzrylvXBhpjqODu.webp", //图片三，最右侧
 ];

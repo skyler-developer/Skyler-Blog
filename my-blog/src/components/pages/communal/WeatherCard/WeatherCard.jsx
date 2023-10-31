@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Card, Space, message } from "antd";
 import { Select } from "antd";
 import axios from "axios";
+import baseUrl from "../UrlBase/UrlBase";
 
 const MySelect = ({ getWeatherMessage }) => {
     const [addressMessage, setAddressMessage] = useState(null);
@@ -23,7 +24,7 @@ const MySelect = ({ getWeatherMessage }) => {
     useEffect(() => {
         setAddressAdcode(localStorage.getItem("address"));
         axios({
-            url: "http://127.0.0.1:3007/api/address",
+            url: `${baseUrl}/address`,
             method: "get",
         })
             .then((res) => {

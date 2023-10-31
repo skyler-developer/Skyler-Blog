@@ -13,6 +13,8 @@ import Paging from "../communal/Paging/Paging";
 import Content from "../communal/Content/Content";
 import MyCard from "../communal/MyCard/MyCard";
 import { Button, Input, Select, Space, Spin } from "antd";
+import baseUrl from "../communal/UrlBase/UrlBase";
+
 const { Search } = Input;
 const { TextArea } = Input;
 export default function Home() {
@@ -27,7 +29,7 @@ export default function Home() {
 
     useEffect(() => {
         axios({
-            url: "http://127.0.0.1:3007/api/allarticle",
+            url: `${baseUrl}/allarticle`,
             method: "get",
         })
             .then((content) => {
@@ -50,7 +52,7 @@ export default function Home() {
         setXingHuoReply("等待回复中......请耐心等候......");
         axios({
             method: "post",
-            url: "http://127.0.0.1:3007/api/aireply",
+            url: `${baseUrl}/aireply`,
             data: {
                 question: userQuestion,
             },

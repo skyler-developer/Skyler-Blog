@@ -9,13 +9,14 @@ import MyCard from "../communal/MyCard/MyCard";
 import RemarkAreas from "../communal/RemarkArea/RemarkAreas";
 import Footer from "../communal/Footer/Footer";
 import WeatherCard from "../communal/WeatherCard/WeatherCard";
+import baseUrl from "../communal/UrlBase/UrlBase";
 
 export default function AboutMe() {
     const [contentStr, setContentStr] = useState(" ");
     useEffect(() => {
         async function getContentAboutMe() {
             const req = await axios({
-                url: "http://127.0.0.1:3007/api/aboutme",
+                url: `${baseUrl}/aboutme`,
                 method: "get",
             });
             const temp = req.data[0].aboutMeHtml;

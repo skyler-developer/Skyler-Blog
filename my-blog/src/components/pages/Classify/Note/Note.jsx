@@ -7,9 +7,9 @@ import BlinkLoop from "../../communal/BlinkLoop/BlinkLoop";
 import Paging from "../../communal/Paging/Paging";
 import axios from "axios";
 import { useState } from "react";
-import "./Note.css";
 import Footer from "../../communal/Footer/Footer";
 import { Col, Row } from "antd"; //antd栅格化布局组件
+import baseUrl from "../../communal/UrlBase/UrlBase";
 
 const Note = () => {
     const [contentArray, setContentArray] = useState(null);
@@ -22,7 +22,7 @@ const Note = () => {
         async function getContent() {
             const content = await axios({
                 method: "get",
-                url: "http://127.0.0.1:3007/api/article/1",
+                url: `${baseUrl}/article/1`,
             });
             const contentArray = content.data;
             setContentArray(contentArray.reverse());

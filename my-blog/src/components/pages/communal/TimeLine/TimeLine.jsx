@@ -6,13 +6,14 @@ import { Col, Row } from "antd"; //antd栅格化布局组件
 import axios from "axios";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import "./TimeLine.css";
+import baseUrl from "../UrlBase/UrlBase";
 
 const LinePot = () => {
     const [result, setResult] = useState(null);
     useEffect(() => {
         async function findAllArcicle() {
             const response = await axios({
-                url: "http://127.0.0.1:3007/api/allarticle",
+                url: `${baseUrl}/allarticle`,
                 method: "get",
             });
             await setResult(response.data.reverse());

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-
+import baseUrl from "../UrlBase/UrlBase";
 import { FloatButton } from "antd";
 import { Col, Row, Menu, Input } from "antd"; //格栅化、导航、输入框所需组件
 import {
@@ -84,7 +84,7 @@ const Header = ({ headerBackgroundColor, active }) => {
         console.log(showSearchResults);
         if (showSearchResults === false) {
             axios({
-                url: "http://127.0.0.1:3007/api/search",
+                url: `${baseUrl}/search`,
                 method: "post",
                 data: {
                     keyword: searchContent,

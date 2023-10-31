@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom"; //路由链接
 import { Col } from "antd";
 import { Space, Tag } from "antd";
 import { TagsTwoTone } from "@ant-design/icons";
+import baseUrl from "../UrlBase/UrlBase";
+
 import axios from "axios";
 const Footer = () => {
     const [result, setResult] = useState(null);
@@ -14,14 +16,14 @@ const Footer = () => {
     useEffect(() => {
         async function findAllArcicle() {
             const response = await axios({
-                url: "http://127.0.0.1:3007/api/allarticle",
+                url: `${baseUrl}/allarticle`,
                 method: "get",
             });
             await setResult(response.data.reverse());
         }
         findAllArcicle();
         axios({
-            url: "http://127.0.0.1:3007/api/getfriendlink",
+            url: `${baseUrl}/getfriendlink`,
             method: "get",
         })
             .then((res) => {
@@ -32,7 +34,7 @@ const Footer = () => {
                 console.log(err);
             });
         axios({
-            url: "http://127.0.0.1:3007/api/getmotto",
+            url: `${baseUrl}/getmotto`,
             method: "get",
         })
             .then((res) => {

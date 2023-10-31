@@ -12,6 +12,7 @@ import BlinkLoop from "../BlinkLoop/BlinkLoop";
 import RemarkAreas from "../RemarkArea/RemarkAreas";
 import Footer from "../Footer/Footer";
 import WeatherCard from "../WeatherCard/WeatherCard";
+import baseUrl from "../UrlBase/UrlBase";
 
 import "./DetailContent.css";
 import "prismjs/themes/prism-tomorrow.min.css";
@@ -25,7 +26,7 @@ const DetailContent = () => {
     useEffect(() => {
         async function getItemArticle() {
             const resultPromise = await axios({
-                url: `http://127.0.0.1:3007/api/blog/${id}`,
+                url: `${baseUrl}/blog/${id}`,
                 method: "get",
             });
             setItemArticle(resultPromise.data[0]);

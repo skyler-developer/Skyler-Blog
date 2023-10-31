@@ -10,6 +10,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 import Paging from "../Paging/Paging";
+import baseUrl from "../UrlBase/UrlBase";
 
 const { TextArea } = Input;
 
@@ -55,7 +56,7 @@ const EditRemark = ({
                 priorRemarkId: priorRemarkId,
                 deep: deep,
             },
-            url: "http://127.0.0.1:3007/api/saveremark",
+            url: `${baseUrl}/saveremark`,
         })
             .then((res) => {
                 console.log(res);
@@ -241,7 +242,7 @@ const RemarkArea = ({ relatedArticleId }) => {
     useEffect(() => {
         const p1 = axios({
             method: "get",
-            url: `http://127.0.0.1:3007/api/remark/${relatedArticleId}`,
+            url: `${baseUrl}/remark/${relatedArticleId}`,
         });
         const p2 = p1.then(async (res) => {
             const allData = res.data.reverse();
@@ -328,20 +329,22 @@ const RemarkArea = ({ relatedArticleId }) => {
                             );
                         })}
                     </Space>
-                    {<Row>
-                        <Col
-                            span={24}
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}>
-                            <Paging
-                                pageOnChange={pageOnChange}
-                                contentTotal={firstRemarkDate.length}
-                            />
-                        </Col>
-                    </Row>}
+                    {
+                        <Row>
+                            <Col
+                                span={24}
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}>
+                                <Paging
+                                    pageOnChange={pageOnChange}
+                                    contentTotal={firstRemarkDate.length}
+                                />
+                            </Col>
+                        </Row>
+                    }
                 </>
             )}
         </Col>
