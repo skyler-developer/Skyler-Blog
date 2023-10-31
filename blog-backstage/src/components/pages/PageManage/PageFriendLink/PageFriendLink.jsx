@@ -130,7 +130,7 @@ const PageFriendLink = () => {
             }}>
             <LeftHeader active={"friendLink"} />
             <Layout>
-                <MiddleContent>
+                <MiddleContent breadcrumb={[{ title: "页面管理" }, { title: "友情链接" }]}>
                     <Space wrap={true} size="large" align="center">
                         {friendResult &&
                             friendResult.map((item) => {

@@ -33,7 +33,11 @@ const items = [
     ),
 
     //仪表盘，查看访问量，评论数量等信息
-    getItem(<NavLink>Dashboard</NavLink>, "dashboard", <DashboardOutlined />),
+    getItem(
+        <NavLink to="/dashboard">Dashboard</NavLink>,
+        "dashboard",
+        <DashboardOutlined />,
+    ),
     //添加折线区分模块
     {
         type: "divider",

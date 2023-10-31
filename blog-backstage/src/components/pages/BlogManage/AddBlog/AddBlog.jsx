@@ -131,7 +131,6 @@ const AddBlog = () => {
                     console.error(error);
                 });
         } else {
-            console.log("demo");
             axios({
                 url: `${baseUrl}/modifyblog/${modifyId}`,
                 method: "post",
@@ -177,7 +176,7 @@ const AddBlog = () => {
         <Layout>
             <LeftHeader active={"add"} />
             <Layout>
-                <MiddleContent>
+                <MiddleContent breadcrumb={[{ title: "博客管理" }, { title: "写新文章" }]}>
                     <div
                         style={{
                             display: "flex",

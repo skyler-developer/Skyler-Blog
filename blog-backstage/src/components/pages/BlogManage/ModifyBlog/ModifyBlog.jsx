@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Layout, Input, Select, Button, Space, Modal } from "antd";
 import LeftHeader from "../../../communal/LeftHeader/LeftHeader";
 import MiddleContent from "../../../communal/MiddleContent/MiddleContent";
-import Edit from "../../../communal/Edit/Edit";
 import BottomFooter from "../../../communal/BottomFooter/BottomFooter";
 import axios from "axios";
 import baseUrl from "../../../../axios/baseUrl";
@@ -66,7 +65,7 @@ const ModifyBlog = () => {
             }}>
             <LeftHeader active={"modify"} />
             <Layout>
-                <MiddleContent>
+                <MiddleContent breadcrumb={[{ title: "博客管理" }, { title: "修改文章" }]}>
                     <Space wrap={true} size="large" align="center">
                         {data &&
                             data.map((item) => {

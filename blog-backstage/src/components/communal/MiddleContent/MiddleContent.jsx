@@ -3,7 +3,7 @@ import React from "react";
 import { Layout, Breadcrumb } from "antd";
 const { Content } = Layout;
 
-const MiddleContent = ({ children }) => {
+const MiddleContent = ({ breadcrumb = [{ title: "DashBoard" }], children }) => {
     return (
         <Content
             style={{
@@ -12,10 +12,9 @@ const MiddleContent = ({ children }) => {
             <Breadcrumb
                 style={{
                     margin: "4vh 0",
-                }}>
-                <Breadcrumb.Item>demo</Breadcrumb.Item>
-                <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
+                }}
+                items={breadcrumb}
+            />
             {children}
         </Content>
     );

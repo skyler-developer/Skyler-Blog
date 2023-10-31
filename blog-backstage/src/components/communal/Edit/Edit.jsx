@@ -53,7 +53,7 @@ const Edit = ({ onContentChange, editContentState, editContent }) => {
                         zIndex: 100,
                         width: "37vw",
                         display: "inline-block",
-                        minHeight: "65vh",
+                        // height: "100vh",
                         display: "flex",
                         flexDirection: "column",
                     }}>
@@ -63,7 +63,7 @@ const Edit = ({ onContentChange, editContentState, editContent }) => {
                         mode="default"
                         style={{
                             borderBottom: "1px solid #ccc",
-                            width: "100%" /* height: "15vh" */,
+                            width: "100%",
                         }}
                     />
                     <div style={{ flex: "1" }}>
@@ -74,7 +74,7 @@ const Edit = ({ onContentChange, editContentState, editContent }) => {
                             onChange={handleChildComponentChange}
                             mode="default"
                             style={{
-                                height: "100%",
+                                height: "80vh",
                                 width: "100%",
                                 overflowY: "hidden",
                                 borderBottom: "1px solid #ccc",
@@ -87,7 +87,7 @@ const Edit = ({ onContentChange, editContentState, editContent }) => {
                     style={{
                         display: "inline-block",
                         width: "37vw",
-                        minHeight: "65vh",
+                        height: "97vh",
                         backgroundColor: "rgb(255,255,255)",
                         verticalAlign: "top",
                         margin: "0 1vw",
@@ -95,6 +95,7 @@ const Edit = ({ onContentChange, editContentState, editContent }) => {
                         fontSize: "1vw",
                         letterSpacing: "0.1rem",
                         lineHeight: "5vh",
+                        overflow: "auto",
                     }}>
                     {html && <div dangerouslySetInnerHTML={{ __html: html }} className="preview" />}
                 </div>

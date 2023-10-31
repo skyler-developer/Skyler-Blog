@@ -66,7 +66,7 @@ const ModifyComment = () => {
             }}>
             <LeftHeader active={"modifycomment"} />
             <Layout>
-                <MiddleContent>
+                <MiddleContent breadcrumb={[{ title: "评论管理" }, { title: "修改评论" }]}>
                     <Space wrap={true} size="large" align="center">
                         {commentData &&
                             commentData.map((item) => {
