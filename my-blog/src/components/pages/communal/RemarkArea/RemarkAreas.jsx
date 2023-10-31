@@ -8,7 +8,7 @@ import { Tooltip } from "antd";
 import { Divider, Avatar } from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
-
+import MyAlert from "../MyAlert/MyAlert";
 import Paging from "../Paging/Paging";
 import baseUrl from "../UrlBase/UrlBase";
 
@@ -25,7 +25,10 @@ const EditRemark = ({
     const [remark, setRemark] = useState(null);
     const [userId, setUserId] = useState(null);
     const [userEmail, setUserEmail] = useState(null);
-
+    const [alertState, setAlertState] = useState({ isView: false }); //设置警告框的状态
+    let alertStateObject = {}; //设置警告框状态对象
+    let alertType; //警告框状态类型
+    let alertMessage; //警告框状态信息
     useEffect(() => {
         const userIdCookie = Cookies.get("userId");
 
@@ -58,9 +61,26 @@ const EditRemark = ({
             },
             url: `${baseUrl}/saveremark`,
         })
-            .then((res) => {
-                console.log(res);
+            .then((response) => {
+                console.log(response);
                 addRemarkDataLength();
+                if (response.status / 100 === 2) {
+                    alertType = "success";
+                    alertMessage = "发布成功！";
+                } else if (response.status / 100 === 4) {
+                    alertType = "error";
+                    alertMessage = "发布失败！";
+                }
+                alertStateObject = {
+                    isView: true,
+                    type: alertType,
+                    message: alertMessage,
+                    description: response.data.message,
+                };
+                setAlertState(alertStateObject);
+                setTimeout(() => {
+                    setAlertState({ isView: false });
+                }, 3000);
             })
             .catch((err) => {
                 console.log(err);
@@ -112,6 +132,7 @@ const EditRemark = ({
                 <Button type="primary" style={{ fontSize: "1rem" }} onClick={handleSubmit}>
                     发送
                 </Button>
+                <MyAlert alertState={alertState} />
             </Space>
         </>
     );
