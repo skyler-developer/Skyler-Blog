@@ -25,6 +25,7 @@ const EditRemark = ({
     const [remark, setRemark] = useState(null);
     const [userId, setUserId] = useState(null);
     const [userEmail, setUserEmail] = useState(null);
+    const [buttonState, setButtonState] = useState(false);
     const [alertState, setAlertState] = useState({ isView: false }); //设置警告框的状态
     let alertStateObject = {}; //设置警告框状态对象
     let alertType; //警告框状态类型
@@ -46,6 +47,24 @@ const EditRemark = ({
     };
 
     const handleSubmit = async () => {
+        setButtonState(true);
+        if (remark.length === 0 || userId.length < 8) {
+            console.log("shibai");
+            alertStateObject = {
+                isView: true,
+                type: "error",
+                message: "发送失败！",
+                description: "请检查输入是否有误！按要求填写信息，亲",
+            };
+            setAlertState(alertStateObject);
+            setTimeout(() => {
+                setAlertState({ isView: false });
+                setButtonState(false);
+            }, 3000);
+
+            return;
+        }
+
         await axios({
             withCredentials: "include",
             method: "post",
@@ -80,6 +99,7 @@ const EditRemark = ({
                 setAlertState(alertStateObject);
                 setTimeout(() => {
                     setAlertState({ isView: false });
+                    setButtonState(false);
                 }, 3000);
             })
             .catch((err) => {
@@ -129,7 +149,11 @@ const EditRemark = ({
                         style={{ width: "22vw" }}
                     />
                 </Tooltip>
-                <Button type="primary" style={{ fontSize: "1rem" }} onClick={handleSubmit}>
+                <Button
+                    type="primary"
+                    style={{ fontSize: "1rem" }}
+                    onClick={handleSubmit}
+                    disabled={buttonState}>
                     发送
                 </Button>
                 <MyAlert alertState={alertState} />

@@ -34,6 +34,7 @@ const Background = () => {
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 transition: "1s",
+                zIndex: "1",
             }}
             onMouseMove={handleMouseMove}></Col>
     );

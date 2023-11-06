@@ -22,6 +22,7 @@ export default function Home() {
     const [pageNumber, setPageNumber] = useState(1);
     const [userQuestion, setUserQuestion] = useState(null);
     const [xingHuoReply, setXingHuoReply] = useState(null);
+    const [buttonState, setButtonState] = useState(false);
     const pageOnChange = (number) => {
         setPageNumber(number);
     };
@@ -49,6 +50,7 @@ export default function Home() {
 
     const handelClick = () => {
         setXingHuoReply("等待回复中......请耐心等候......");
+        setButtonState(true);
         axios({
             method: "post",
             url: `${baseUrl}/aireply`,
@@ -58,6 +60,7 @@ export default function Home() {
         }).then((res) => {
             console.log(res);
             setXingHuoReply(res.data);
+            setButtonState(false);
         });
     };
 
@@ -94,12 +97,15 @@ export default function Home() {
                     <TextArea
                         rows={4}
                         placeholder="在此输入你的问题"
-                        // maxLength={6}
-                        // disabled={true
+                        disabled={buttonState}
                         onChange={handleChange}
                         style={{ width: "40vw", marginRight: "1vw" }}
                     />
-                    <Button type="primary" style={{ width: "4vw" }} onClick={handelClick}>
+                    <Button
+                        type="primary"
+                        style={{ width: "4vw" }}
+                        onClick={handelClick}
+                        disabled={buttonState}>
                         提问
                     </Button>
                     <div

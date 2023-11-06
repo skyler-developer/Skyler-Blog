@@ -74,6 +74,7 @@ const Header = ({ headerBackgroundColor, active }) => {
     const [showSearchResults, setShowSearchResults] = useState(false);
     const [searchContent, setSearchContent] = useState(false);
     const [searchResult, setSearchResult] = useState(false);
+    const [loadingState, setLoadingState] = useState(false);
 
     //导航组件，点击效果
     const onClick = (e) => {
@@ -81,9 +82,10 @@ const Header = ({ headerBackgroundColor, active }) => {
     };
     const onSearch = (value, _e, info) => {
         setShowSearchResults(!showSearchResults);
-        console.log(info?.source, value);
-        console.log(showSearchResults);
+
         if (showSearchResults === false) {
+            setLoadingState(true);
+
             axios({
                 url: `${baseUrl}/search`,
                 method: "post",
@@ -92,8 +94,8 @@ const Header = ({ headerBackgroundColor, active }) => {
                 },
             })
                 .then((res) => {
-                    console.log(res.data);
                     setSearchResult(res.data);
+                    setLoadingState(false);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -159,6 +161,7 @@ const Header = ({ headerBackgroundColor, active }) => {
                         placeholder="输入搜索内容..."
                         size="large"
                         onChange={handleChange}
+                        loading={loadingState}
                         style={{
                             width: "15vw",
                         }}
@@ -172,7 +175,7 @@ const Header = ({ headerBackgroundColor, active }) => {
                 <div
                     style={{
                         width: "12vw",
-                        height: "25vh" /* , backgroundColor: "red" */,
+                        height: "25vh",
                         position: "fixed",
                         left: "70.8vw",
                         zIndex: "99",
@@ -202,7 +205,6 @@ const Header = ({ headerBackgroundColor, active }) => {
                                             fontSize: "1rem",
                                             width: "13vw",
                                             marginTop: "1vh",
-                                            // color: "rgb(82, 134, 255)",
                                         }}>
                                         {item.title}
                                     </div>
