@@ -3,9 +3,9 @@ import { Row, Col } from "antd";
 
 import { debounce } from "lodash";
 const imgUrl = [
-    "https://s2.loli.net/2023/10/31/8gsyzwDRTiu2KB4.webp", //图片一，最左侧
-    "https://s2.loli.net/2023/10/29/HUfqIvRj2Vt13Xe.webp", //图片二，中间
-    "https://s2.loli.net/2023/10/29/FzrylvXBhpjqODu.webp", //图片三，最右侧
+    "http://www.skyler.fun/weatherWithYou1.webp", //图片一，最左侧
+    "http://www.skyler.fun/weatherWithYou2.webp", //图片二，中间
+    "http://www.skyler.fun/weatherWithYou3.webp", //图片三，最右侧
 ];
 const Background = () => {
     const [imageUrl, setImageUrl] = useState(imgUrl[1]);

@@ -23,34 +23,31 @@ const MyCard = () => {
                 position: "fixed",
                 top: "15vh",
                 left: "9vw",
-                // zIndex: "-1",
             }}
             actions={[
                 <a href="https://music.163.com/#/user/home?id=417690617">
                     <img
                         alt="wangYiYunIcon"
-                        src="https://s2.loli.net/2023/09/22/wKBuqExs94HecRl.png"
+                        src="http://www.skyler.fun/wangYiYun.png"
                         style={{ width: "30px", height: "30px" }}
                     />
                 </a>,
                 <a href="https://gitee.com/laihuizhou">
                     <img
                         alt="giteeIcon"
-                        src="https://s2.loli.net/2023/09/22/VrOctYqQSBajkXv.png"
+                        src="http://www.skyler.fun/gitee.png"
                         style={{ width: "30px", height: "30px" }}
                     />
                 </a>,
                 <a href="https://blog.csdn.net/qq_61047719">
                     <img
                         alt="csdnIcon"
-                        src="https://s2.loli.net/2023/09/22/Mf4KGom3XxlysNr.png"
+                        src="http://www.skyler.fun/csdn.png"
                         style={{ width: "30px", height: "30px" }}
                     />
                 </a>,
             ]}
-            cover={
-                <img alt="headPhoto" src="https://s2.loli.net/2023/09/22/mATMaFsIt7vfDdi.png" />
-            }>
+            cover={<img alt="headPhoto" src="http://www.skyler.fun/headPhoto.png" />}>
             <Meta title="Skyler" description="菜鸟也有进大厂的梦" />
             <br />
             <Collapse items={items} defaultActiveKey={["0"]} onChange={onChange} size="small" />

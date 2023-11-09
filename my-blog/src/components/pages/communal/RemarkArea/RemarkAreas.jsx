@@ -31,18 +31,19 @@ const EditRemark = ({
     let alertType; //警告框状态类型
     let alertMessage; //警告框状态信息
     useEffect(() => {
-        const userIdCookie = Cookies.get("userId");
-
-        setUserId(userIdCookie);
+        setUserId(localStorage.getItem("userId"));
+        setUserEmail(localStorage.getItem("userEmail"));
     }, []);
 
     const onChangeContent = (e) => {
         setRemark(e.target.value);
     };
     const onChangeUserId = (e) => {
+        localStorage.setItem("userId", e.target.value);
         setUserId(e.target.value);
     };
     const onChangeUserEmail = (e) => {
+        localStorage.setItem("userEmail", e.target.value);
         setUserEmail(e.target.value);
     };
 
@@ -144,6 +145,7 @@ const EditRemark = ({
                     <Input
                         onChange={onChangeUserEmail}
                         type="email"
+                        value={userEmail}
                         showCount
                         placeholder="你的邮箱（可选填）"
                         style={{ width: "22vw" }}

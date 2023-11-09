@@ -40,7 +40,7 @@ const MySelect = ({ getWeatherMessage }) => {
             .catch((err) => {
                 console.log(err);
             });
-    },[]);
+    }, []);
 
     useEffect(() => {
         if (addressAdcode != null) {
@@ -84,9 +84,7 @@ const MySelect = ({ getWeatherMessage }) => {
 const WeatherCard = () => {
     const [weatherMessage, setWeatherMessage] = useState(null);
     const [weatherTip, setWeatherTip] = useState(null);
-    const [weatherSrc, setWeatherSrc] = useState(
-        "https://s2.loli.net/2023/10/29/73LrC6oIyFWqzmp.webp",
-    );
+    const [weatherSrc, setWeatherSrc] = useState("http://www.skyler.fun/cloudWeather.webp");
     const getWeatherMessage = (message) => {
         console.log(message);
         if (message.temperature <= 15) {
@@ -109,7 +107,7 @@ const WeatherCard = () => {
             message.weather === "热" ||
             message.weather === "未知"
         ) {
-            setWeatherSrc("https://s2.loli.net/2023/10/29/O81dzoSUKvHyCWu.webp");
+            setWeatherSrc("http://www.skyler.fun/sunWeather.webp");
         } else if (
             message.weather === "多云" ||
             message.weather === "阴" ||
@@ -121,6 +119,7 @@ const WeatherCard = () => {
             message.weather === "狂爆风" ||
             message.weather === "飙风" ||
             message.weather === "热带风暴" ||
+            message.weather === "霾" ||
             message.weather === "中度霾" ||
             message.weather === "重度霾" ||
             message.weather === "严重霾" ||
@@ -137,7 +136,7 @@ const WeatherCard = () => {
             message.weather === "特强浓雾" ||
             message.weather === "冷"
         ) {
-            setWeatherSrc("https://s2.loli.net/2023/10/29/65RbhFOH34mNTMy.webp");
+            setWeatherSrc("http://www.skyler.fun/cloudWeather.webp");
         } else if (
             message.weather === "雪" ||
             message.weather === "阵雪" ||
@@ -149,13 +148,9 @@ const WeatherCard = () => {
             message.weather === "中雪-大雪" ||
             message.weather === "大雪-暴雪"
         ) {
-            setWeatherSrc(
-                "https://wimg.588ku.com/gif620/20/11/18/a39f9a6af57604601a0c2c0cbfc399a0.gif",
-            );
+            setWeatherSrc("http://www.skyler.fun/snowWeather.webp");
         } else {
-            setWeatherSrc(
-                "https://wimg.588ku.com/gif620/21/06/03/7600cea92f29f2b9b8997741cbdb1197.gif",
-            );
+            setWeatherSrc("http://www.skyler.fun/rainWeather.webp");
         }
     };
     return (
