@@ -22,7 +22,8 @@ import "prismjs/plugins/line-numbers/prism-line-numbers.min.js";
 const DetailContent = () => {
     const { id } = useParams();
     const [itemArticle, setItemArticle] = useState(null);
-    console.log(itemArticle);
+    const windowWith = window.innerWidth;
+
     useEffect(() => {
         async function getItemArticle() {
             const resultPromise = await axios({
@@ -57,15 +58,14 @@ const DetailContent = () => {
 
     return (
         itemArticle && (
-            <Row /* className="rowWeight" */>
+            <Row>
                 <Header
                     headerBackgroundColor={"rgba(102, 196, 251,0.7)"}
                     active={judgeKind(itemArticle).action}
                 />
                 <Col
-                    span={12}
-                    offset={6}
-                    // className="col"
+                    sm={{ span: 12, offset: 6 }}
+                    xs={{ span: 22, offset: 1 }}
                     style={{
                         display: "flex",
                         flexDirection: "column",
@@ -77,53 +77,24 @@ const DetailContent = () => {
                         minHeight: "90vh",
                     }}>
                     <Row className="firstRow">
-                        <Col
-                            span={24}
-                            style={{
-                                color: "black",
-                                fontSize: "2vw",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}>
+                        <Col className="DetailContent-title" span={24}>
                             {itemArticle.title}
                         </Col>
                     </Row>
                     <Row justify="space-around" className="secondRow" style={{ display: "flex" }}>
-                        <Col
-                            key={"time"}
-                            span={7}
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}>
+                        <Col className="DetailContent-time" key={"time"} span={7}>
                             时间&nbsp;
                             <FieldTimeOutlined />
                             &nbsp;
                             {itemArticle.time}
                         </Col>
-                        <Col
-                            key={"wordage"}
-                            span={7}
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}>
+                        <Col className="DetailContent-wordage" key={"wordage"} span={7}>
                             字数&nbsp;
                             <FileTextOutlined />
                             &nbsp;
                             {itemArticle.text.length}
                         </Col>
-                        <Col
-                            key={"type"}
-                            span={7}
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}>
+                        <Col className="DetailContent-kind" key={"type"} span={7}>
                             类型&nbsp;
                             <TagOutlined />
                             &nbsp;
@@ -133,21 +104,22 @@ const DetailContent = () => {
 
                     <div
                         className="contentArticle line-numbers"
-                        style={{ fontSize: "1vw", letterSpacing: "0.1rem", lineHeight: "5vh" }}
                         dangerouslySetInnerHTML={{ __html: itemArticle.content }}
                     />
 
                     <MyCard />
                     <BlinkLoop />
                 </Col>
-                <Col
-                    span={5}
-                    offset={1}
-                    style={{
-                        marginTop: "11vh",
-                    }}>
-                    <WeatherCard />
-                </Col>
+                {windowWith > 500 && (
+                    <Col
+                        span={5}
+                        offset={1}
+                        style={{
+                            marginTop: "11vh",
+                        }}>
+                        <WeatherCard />
+                    </Col>
+                )}
                 <Col span={24} style={{ marginTop: "2vh" }}>
                     <Row>
                         <RemarkAreas relatedArticleId={id} />

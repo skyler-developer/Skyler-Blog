@@ -10,7 +10,7 @@ import RemarkAreas from "../communal/RemarkArea/RemarkAreas";
 import Footer from "../communal/Footer/Footer";
 import WeatherCard from "../communal/WeatherCard/WeatherCard";
 import baseUrl from "../../../axios/baseUrl";
-
+import "./AboutMe.css";
 
 export default function AboutMe() {
     const [contentStr, setContentStr] = useState(" ");
@@ -32,8 +32,8 @@ export default function AboutMe() {
             <MyCard />
             <Row>
                 <Col
-                    span={12}
-                    offset={6}
+                    sm={{ span: 12, offset: 6 }}
+                    xs={{ span: 22, offset: 1 }}
                     style={{
                         backgroundColor: "rgb(255,255,255)",
                         marginTop: "9vh",
@@ -48,31 +48,24 @@ export default function AboutMe() {
                             width: "90%",
                             padding: "5%",
                         }}>
-                        <h1
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                fontSize: "3vh",
-                                height: "10vh",
-                            }}>
-                            关于帅气的Skyler
-                        </h1>
+                        <h1 className="AboutMe-title">关于帅气的Skyler</h1>
                         <div
+                            className="AboutMe-content"
                             dangerouslySetInnerHTML={{ __html: contentStr }}
-                            style={{ fontSize: "1vw", lineHeight: "5vh", letterSpacing: "3px" }}
                         />
                     </div>
                     <BlinkLoop />
                 </Col>
-                <Col
-                    span={5}
-                    offset={1}
-                    style={{
-                        marginTop: "11vh",
-                    }}>
-                    <WeatherCard />
-                </Col>
+                {window.innerWidth > 500 && (
+                    <Col
+                        span={5}
+                        offset={1}
+                        style={{
+                            marginTop: "11vh",
+                        }}>
+                        <WeatherCard />
+                    </Col>
+                )}
                 <Col span={24}>
                     <Row>
                         <RemarkAreas relatedArticleId={0} />

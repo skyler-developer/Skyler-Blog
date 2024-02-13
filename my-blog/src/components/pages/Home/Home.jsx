@@ -17,6 +17,7 @@ import baseUrl from "../../../axios/baseUrl";
 
 const { TextArea } = Input;
 export default function Home() {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [contentArray, setContentArray] = useState(null);
     const [newContentArray, setNewContentArray] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
@@ -67,70 +68,75 @@ export default function Home() {
     return (
         <>
             <Row style={{ zIndex: "999" }}>
-                <Header active={"homePage"} />
+                <Header
+                    active={"homePage"}
+                    headerBackgroundColor={windowWidth < 500 ? "rgba(102, 196, 251,0.7)" : null}
+                />
                 <Background />
                 <BlinkLoop />
                 <Col span={24} style={{ backgroundColor: "rgb(239, 239, 239)", zIndex: "999" }}>
                     <WaveLineUp />
                 </Col>
-                <Col
-                    span={12}
-                    offset={6}
-                    style={{
-                        backgroundColor: "rgb(255, 255, 255)",
-                        minHeight: "50vh",
-                        marginTop: "20vh",
-                        padding: "2vw",
-                        borderRadius: "1vw",
-                    }}>
-                    <div
+                {windowWidth > 500 && (
+                    <Col
+                        sm={{ span: 12, offset: 6 }}
+                        xs={{ span: 22, offset: 1 }}
                         style={{
-                            display: "flex",
-                            alignContent: "center",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            fontSize: "1.3rem",
-                            margin: "2vh auto",
+                            backgroundColor: "rgb(255, 255, 255)",
+                            minHeight: "50vh",
+                            marginTop: "20vh",
+                            padding: "2vw",
+                            borderRadius: "1vw",
                         }}>
-                        "治愈心情”AI智能问答
-                    </div>
-                    <TextArea
-                        rows={4}
-                        placeholder="在此输入你的问题"
-                        disabled={buttonState}
-                        onChange={handleChange}
-                        style={{ width: "40vw", marginRight: "1vw" }}
-                    />
-                    <Button
-                        type="primary"
-                        style={{ width: "4vw" }}
-                        onClick={handelClick}
-                        disabled={buttonState}>
-                        提问
-                    </Button>
-                    <div
-                        style={{
-                            margin: "5vh 0",
-                            minHeight: "30vh",
-                            padding: "10px 20px",
-                            border: "solid 1px rgb(64, 150, 255)",
-                            fontSize: "1.2rem",
-                            borderRadius: "5px",
-                            fontFamily: "HYLeMiaoTi,STXinwei,Microsoft JhengHei",
-                        }}>
-                        {xingHuoReply}
-                    </div>
-                </Col>
+                        <div
+                            style={{
+                                display: "flex",
+                                alignContent: "center",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: "1.3rem",
+                                margin: "2vh auto",
+                            }}>
+                            "治愈心情”AI智能问答
+                        </div>
+                        <TextArea
+                            rows={4}
+                            placeholder="在此输入你的问题"
+                            disabled={buttonState}
+                            onChange={handleChange}
+                            style={{ width: "40vw", marginRight: "1vw" }}
+                        />
+                        <Button
+                            type="primary"
+                            style={{ width: "4vw" }}
+                            onClick={handelClick}
+                            disabled={buttonState}>
+                            提问
+                        </Button>
+                        <div
+                            style={{
+                                margin: "5vh 0",
+                                minHeight: "30vh",
+                                padding: "10px 20px",
+                                border: "solid 1px rgb(64, 150, 255)",
+                                fontSize: "1.2rem",
+                                borderRadius: "5px",
+                                fontFamily: "HYLeMiaoTi,STXinwei,Microsoft JhengHei",
+                            }}>
+                            {xingHuoReply}
+                        </div>
+                    </Col>
+                )}
 
                 {newContentArray && (
-                    <Col span={24} style={{ height: "500px" }}>
+                    <Col span={24} style={{ height: "500px", marginTop: "60px" }}>
                         {newContentArray.map((item) => {
                             return <Content key={item.id} contentArrayList={item} />;
                         })}
                         <Row>
                             <Col
-                                span={12}
-                                offset={6}
+                                sm={{ span: 12, offset: 6 }}
+                                xs={{ span: 24, offset: 0 }}
                                 style={{
                                     display: "flex",
                                     justifyContent: "center",

@@ -76,6 +76,8 @@ const Header = ({ headerBackgroundColor, active }) => {
     const [searchResult, setSearchResult] = useState(false);
     const [loadingState, setLoadingState] = useState(false);
 
+    console.log("window.width");
+    console.log(window.innerWidth);
     //导航组件，点击效果
     const onClick = (e) => {
         setCurrent(e.key);
@@ -114,11 +116,11 @@ const Header = ({ headerBackgroundColor, active }) => {
                 className="header"
                 style={{ backgroundColor: headerBackgroundColor }}>
                 {/* 最左侧文字组件 */}
-                <Col span={3} offset={3}>
+                <Col sm={{ span: 3, offset: 3 }} xs={{ span: 0 }}>
                     <SkylerFont />
                 </Col>
 
-                <Col span={2}>
+                <Col sm={{ span: 2, offset: 0 }} xs={{ span: 5, offset: 2 }}>
                     <Menu
                         onClick={onClick}
                         selectedKeys={[current]}
@@ -127,7 +129,7 @@ const Header = ({ headerBackgroundColor, active }) => {
                         style={{ background: "transparent" }}
                     />
                 </Col>
-                <Col span={2}>
+                <Col sm={{ span: 2 }} xs={{ span: 5 }}>
                     <Menu
                         onClick={onClick}
                         selectedKeys={[current]}
@@ -136,7 +138,7 @@ const Header = ({ headerBackgroundColor, active }) => {
                         style={{ background: "transparent" }}
                     />
                 </Col>
-                <Col span={2}>
+                <Col sm={{ span: 2 }} xs={{ span: 5 }}>
                     <Menu
                         onClick={onClick}
                         selectedKeys={[current]}
@@ -145,7 +147,7 @@ const Header = ({ headerBackgroundColor, active }) => {
                         style={{ background: "transparent" }}
                     />
                 </Col>
-                <Col span={2}>
+                <Col sm={{ span: 2 }} xs={{ span: 5 }}>
                     <Menu
                         onClick={onClick}
                         selectedKeys={[current]}
@@ -156,7 +158,7 @@ const Header = ({ headerBackgroundColor, active }) => {
                 </Col>
 
                 {/* 搜索框 */}
-                <Col span={6} offset={3}>
+                <Col span={6} offset={3} className="Header-search">
                     <Search
                         placeholder="输入搜索内容..."
                         size="large"

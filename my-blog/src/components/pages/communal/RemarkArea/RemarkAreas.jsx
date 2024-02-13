@@ -7,10 +7,10 @@ import { Button, Space } from "antd";
 import { Tooltip } from "antd";
 import { Divider, Avatar } from "antd";
 import axios from "axios";
-import Cookies from "js-cookie";
 import MyAlert from "../MyAlert/MyAlert";
 import Paging from "../Paging/Paging";
 import baseUrl from "../../../../axios/baseUrl";
+import "./RemarkAreas.css";
 
 const { TextArea } = Input;
 
@@ -131,24 +131,23 @@ const EditRemark = ({
                     title="输入QQ将自动获取你的头像和昵称，以用来显示评论（必填）"
                     color="rgb(16, 142, 233)">
                     <Input
+                        className="RemarkAreas-inputQqNumber"
                         onChange={onChangeUserId}
-                        className="qqNumber"
                         type="number"
                         showCount
                         maxLength={10}
                         placeholder="你的QQ号（必填）"
                         value={userId}
-                        style={{ width: "20vw" }}
                     />
                 </Tooltip>
                 <Tooltip title="如果有问题我会通过邮箱联系你（可选填）" color="rgb(16, 142, 233)">
                     <Input
+                        className="RemarkAreas-inputEmail"
                         onChange={onChangeUserEmail}
                         type="email"
                         value={userEmail}
                         showCount
                         placeholder="你的邮箱（可选填）"
-                        style={{ width: "22vw" }}
                     />
                 </Tooltip>
                 <Button
@@ -214,13 +213,7 @@ const OneRemark = ({
                         onClick={handleFirstReply}>
                         {!isView ? "回复" : "取消"}
                     </Button>
-                    <div
-                        style={{
-                            marginTop: "2vh",
-                            fontSize: "1rem",
-                        }}>
-                        {content.content}
-                    </div>
+                    <div className="RemarkAreas-OneRemarkContent">{content.content}</div>
                 </div>
 
                 {/* 二级评论 */}
@@ -254,11 +247,7 @@ const OneRemark = ({
                                     style={{ fontSize: "0.9rem" }}>
                                     {!isView ? "回复" : "取消"}
                                 </Button>
-                                <div
-                                    style={{
-                                        marginTop: "3vh",
-                                        fontSize: "0.9rem",
-                                    }}>
+                                <div className="RemarkAreas-OneRemarkContentSecond">
                                     {item.content}
                                 </div>
                             </div>
@@ -331,8 +320,8 @@ const RemarkArea = ({ relatedArticleId }) => {
     console.log(firstRemarkDate);
     return (
         <Col
-            span={12}
-            offset={6}
+            sm={{ span: 12, offset: 6 }}
+            xs={{ span: 22, offset: 1 }}
             style={{
                 minHeight: "30vh",
                 backgroundColor: "rgb(255,255,255)",
@@ -341,7 +330,7 @@ const RemarkArea = ({ relatedArticleId }) => {
                 marginBottom: "5vh",
                 padding: "1vw",
             }}>
-            <div style={{ marginBottom: "1vh", color: "rgb(22, 119, 255)", fontSize: "1.2rem" }}>
+            <div className="RemarkArea-tip">
                 发布评论,共
                 {"\u00A0"}
                 {allRemarkDate && allRemarkDate.length}

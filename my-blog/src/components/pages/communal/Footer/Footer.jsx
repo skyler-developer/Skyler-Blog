@@ -4,11 +4,13 @@ import { useEffect } from "react";
 import { NavLink } from "react-router-dom"; //路由链接
 
 import { Col } from "antd";
-import { Space, Tag } from "antd";
+import { Space, Tag, Divider } from "antd";
 import { TagsTwoTone } from "@ant-design/icons";
 import baseUrl from "../../../../axios/baseUrl";
 
 import axios from "axios";
+import "./Footer.css";
+
 const Footer = () => {
     const [result, setResult] = useState(null);
     const [friendResult, setFriendResult] = useState(null);
@@ -49,17 +51,7 @@ const Footer = () => {
         <>
             {result && (
                 <>
-                    <Col
-                        span={8}
-                        style={{
-                            height: "20vh",
-                            backgroundColor: "rgb(143, 209, 247)",
-                            padding: "10px 20px 0 20px",
-                            display: "flex",
-                            flexWrap: "wrap",
-                            justifyContent: "space-around",
-                            alignItems: "center",
-                        }}>
+                    <Col className="Footer-friendLink" span={8}>
                         <Space size={"small"} wrap align="center">
                             {friendResult &&
                                 friendResult.map((item) => {
@@ -71,18 +63,7 @@ const Footer = () => {
                                 })}
                         </Space>
                     </Col>
-                    <Col
-                        span={8}
-                        style={{
-                            flexDirection: "column",
-                            height: "20vh",
-                            backgroundColor: "rgb(143, 209, 247)",
-                            padding: "10px",
-                            display: "flex",
-                            flexWrap: "wrap",
-                            justifyContent: "space-around",
-                            alignItems: "center",
-                        }}>
+                    <Col className="Footer-newBlog" span={8}>
                         <div>最新博客</div>
                         {result.slice(0, 3).map((item) => {
                             return (
@@ -92,18 +73,7 @@ const Footer = () => {
                             );
                         })}
                     </Col>
-                    <Col
-                        span={8}
-                        style={{
-                            height: "20vh",
-                            backgroundColor: "rgb(143, 209, 247)",
-                            padding: "10px",
-                            flexDirection: "column",
-                            display: "flex",
-                            flexWrap: "wrap",
-                            justifyContent: "space-around",
-                            alignItems: "center",
-                        }}>
+                    <Col className="Footer-motto" span={8}>
                         {mottoResult && (
                             <>
                                 <div style={{ color: "red", fontSize: "1.2rem" }}>
@@ -120,6 +90,56 @@ const Footer = () => {
                                 </div>
                             </>
                         )}
+                    </Col>
+                    <div
+                        style={{
+                            width: "100%",
+                            height: "0px",
+                            border: "solid 1px rgb(248, 228, 169)",
+                        }}></div>
+                    <Col
+                        span={8}
+                        style={{
+                            backgroundColor: "rgb(143, 209, 247)",
+                            height: "10vh",
+                            padding: "10px",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "space-around",
+                            alignItems: "center",
+                            color: "white",
+                        }}>
+                        Copyright © 2023 SKYLER'S BLOG
+                    </Col>
+
+                    <Col
+                        span={8}
+                        style={{
+                            backgroundColor: "rgb(143, 209, 247)",
+                            height: "10vh",
+                            padding: "10px",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "space-around",
+                            alignItems: "center",
+                        }}>
+                        <a href="https://beian.miit.gov.cn" target="blank">
+                            豫ICP备2023029430号
+                        </a>
+                    </Col>
+                    <Col
+                        span={8}
+                        style={{
+                            backgroundColor: "rgb(143, 209, 247)",
+                            height: "10vh",
+                            padding: "10px",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "space-around",
+                            alignItems: "center",
+                            color: "white",
+                        }}>
+                        本网站由又拍云提供云存储服务
                     </Col>
                 </>
             )}

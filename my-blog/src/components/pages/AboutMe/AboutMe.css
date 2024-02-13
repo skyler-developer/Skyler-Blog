@@ -1,0 +1,23 @@
+.AboutMe-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    height: 10vh;
+}
+.AboutMe-content {
+    font-size: 1vw;
+    line-height: 5vh;
+    letter-spacing: 3px;
+}
+
+@media (max-width: 500px) {
+    .AboutMe-title {
+        font-size: 1.25rem;
+        height: 2rem;
+    }
+    .AboutMe-content {
+        font-size: 0.7rem;
+        line-height: 1.5rem;
+    }
+}

@@ -27,17 +27,13 @@ function getItem(label, key, icon, children, type) {
 
 const items = [
     getItem(
-        "SkylerAdministrator",
+        <NavLink to="/login">SkylerAdministrator</NavLink>,
         "administrator",
         <Avatar src="https://s2.loli.net/2023/09/23/6Dw1GomA4rOcbia.png" size={"small"} />,
     ),
 
     //仪表盘，查看访问量，评论数量等信息
-    getItem(
-        <NavLink to="/dashboard">Dashboard</NavLink>,
-        "dashboard",
-        <DashboardOutlined />,
-    ),
+    getItem(<NavLink to="/dashboard">Dashboard</NavLink>, "dashboard", <DashboardOutlined />),
     //添加折线区分模块
     {
         type: "divider",

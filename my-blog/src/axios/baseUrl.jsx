@@ -1,3 +1,5 @@
-const baseUrl = "http://43.138.43.16:3007/api";
+const baseUrl = "https://skyler.fun/api";
 
 export default baseUrl;
+
+//nginx使用了反向代理

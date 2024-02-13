@@ -1,5 +1,8 @@
 import { Navigate } from "react-router-dom";
 
+//导入登录组件
+import Administrator from "../pages/Administrator/Administrator.jsx";
+
 //导入博客管理组件
 import AddBlog from "../pages/BlogManage/AddBlog/AddBlog.jsx";
 import ModifyBlog from "../pages/BlogManage/ModifyBlog/ModifyBlog.jsx";
@@ -16,6 +19,10 @@ import Dashboard from "../pages/Dashboard/Dashboard.jsx";
 
 //设置路由规则
 const routerArr = [
+    {
+        path: "/login",
+        element: <Administrator />,
+    },
     {
         path: "/dashboard",
         element: <Dashboard />,

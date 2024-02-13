@@ -1,0 +1,38 @@
+.RemarkArea-tip {
+    margin-bottom: 1vh;
+    color: rgb(22, 119, 255);
+    font-size: 1.2rem;
+}
+.RemarkAreas-inputQqNumber {
+    width: 20vw;
+}
+.RemarkAreas-inputEmail {
+    width: 22vw;
+}
+.RemarkAreas-OneRemarkContent {
+    margin-top: 2vh;
+    font-size: 1rem;
+}
+.RemarkAreas-OneRemarkContentSecond {
+    margin-top: 3vh;
+    font-size: 0.9rem;
+}
+@media (max-width: 500px) {
+    .RemarkArea-tip {
+        font-size: 1rem;
+    }
+    .RemarkAreas-inputQqNumber {
+        width: 7.8125rem;
+    }
+    .RemarkAreas-inputEmail {
+        width: 9.375rem;
+    }
+    .RemarkAreas-OneRemarkContent {
+        margin-top: 5px;
+        font-size: 0.7rem;
+    }
+    .RemarkAreas-OneRemarkContentSecond {
+        margin-top: 3px;
+        font-size: 0.6rem;
+    }
+}

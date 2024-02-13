@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "antd"; //antd栅格化布局组件
 import { Button } from "antd"; //底部按钮组件
 import { Image } from "antd"; //图像组件
@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom"; //路由链接
 import { FieldTimeOutlined, FileTextOutlined, TagOutlined } from "@ant-design/icons"; //图表组件
 import "./Content.css";
 const Content = ({ contentArrayList }) => {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
     function judgeKind() {
         switch (contentArrayList.kind) {
             case 1:
@@ -21,8 +23,8 @@ const Content = ({ contentArrayList }) => {
     return (
         <Row className="rowWeight">
             <Col
-                span={12}
-                offset={6}
+                sm={{ span: 12, offset: 6 }}
+                xs={{ span: 22, offset: 1 }}
                 className="col"
                 style={{
                     display: "flex",
@@ -31,77 +33,34 @@ const Content = ({ contentArrayList }) => {
                     backgroundColor: "rgb(255,255,255)",
                 }}>
                 <Row className="firstRow">
-                    <Col
-                        span={24}
-                        style={{
-                            // backgroundColor: "pink",
-                            color: "black",
-                            fontSize: "2vw",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}>
+                    <Col className="Content-title" span={24}>
                         {contentArrayList.title}
                     </Col>
                 </Row>
                 <Row justify="space-around" className="secondRow" style={{ display: "flex" }}>
-                    <Col
-                        key={"time"}
-                        span={7}
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}>
+                    <Col key={"time"} span={7} className="Content-littleTitle">
                         <FieldTimeOutlined />
                         {contentArrayList.time}
                     </Col>
-                    <Col
-                        key={"wordage"}
-                        span={7}
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}>
+                    <Col key={"wordage"} span={7} className="Content-littleTitle">
                         <FileTextOutlined />
                         {contentArrayList.text.length}
                     </Col>
-                    <Col
-                        key={"type"}
-                        span={7}
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}>
+                    <Col key={"type"} span={7} className="Content-littleTitle">
                         <TagOutlined />
                         {judgeKind()}
                     </Col>
                 </Row>
-                <div className="contentArticle" style={{ fontSize: "1vw" }}>
+                <div className="Content-contentArticle">
                     {contentArrayList.text && contentArrayList.text.substring(0, 200)}
                 </div>
                 <Image
+                    className="Content-img"
                     src={contentArrayList.imageUrl}
-                    style={{
-                        padding: "10px",
-                        // backgroundColor: "pink",
-                        display: "block",
-                        height: "50vh",
-                        objectFit: "cover",
-                    }}
+                    height={windowWidth < 500 ? 160 : 400}
                 />
                 <NavLink to={`/blog/article/${contentArrayList.id}`}>
-                    <Button
-                        type="detailContent"
-                        style={{
-                            backgroundColor: "rgb(148, 214, 252)",
-                            margin: "20px auto",
-                            display: "block",
-                            textAlign: "center",
-                            height: "50px",
-                        }}>
+                    <Button type="detailContent" className="Content-detailContent">
                         阅读全文
                     </Button>
                 </NavLink>

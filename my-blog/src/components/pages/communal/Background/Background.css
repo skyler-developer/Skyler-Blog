@@ -1,0 +1,5 @@
+@media (max-width: 500px) {
+    .Background-backgroundImage {
+        display: none;
+    }
+}

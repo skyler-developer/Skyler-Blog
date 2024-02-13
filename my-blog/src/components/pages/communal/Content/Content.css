@@ -11,11 +11,65 @@
 .secondRow {
     height: 8vh;
 }
-.secondRow .ant-col {
-    margin: 20px auto;
-    border: solid rgb(212, 212, 213) 1px;
-}
+
 .contentArticle {
     margin: 10px auto;
     width: 90%;
+}
+.Content-title {
+    color: black;
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Content-littleTitle {
+    margin: 20px auto;
+    border: solid rgb(212, 212, 213) 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Content-contentArticle {
+    font-size: 1vw;
+}
+
+.Content-img {
+    padding: 10px;
+    display: block;
+    object-fit: cover;
+}
+
+.Content-detailContent {
+    background-color: rgb(148, 214, 252);
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+    height: 50px;
+}
+
+@media (max-width: 500px) {
+    .firstRow {
+        height: 2rem;
+        margin: 0;
+    }
+    .secondRow {
+        height: 2rem;
+    }
+    .Content-title {
+        font-size: 1rem;
+    }
+    .Content-littleTitle {
+        margin: 5px auto;
+        font-size: 0.5rem;
+    }
+    .Content-contentArticle {
+        font-size: 0.5rem;
+    }
+    .Content-detailContent {
+        margin: .125rem auto;
+        height: 2.1875rem;
+    }
 }

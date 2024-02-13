@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useRef } from "react";
+import "./BlinkLoop.css";
 const BlinkLoop = () => {
     const loopRef = useRef(null);
     const loop = () => {
@@ -16,16 +17,17 @@ const BlinkLoop = () => {
         }, 500);
 
         // 清除定时器
-        /*  return () => {
+        return () => {
             clearInterval(blinkLoop1);
             clearInterval(blinkLoop2);
-        }; */
+        };
     };
     useEffect(loop, []);
     return (
         <div
-            className="text-malfunction"
+            className="BlinkLoop-textMalfunction"
             style={{
+                zIndex: "9",
                 position: "fixed",
                 right: "2vw",
                 bottom: "25vh",

@@ -59,16 +59,14 @@ const LinePot = () => {
 const TimeLine = () => {
     return (
         <>
-            {" "}
             <Col
-                span={12}
-                offset={6}
+                sm={{ span: 12, offset: 6 }}
+                xs={{ span: 22, offset: 1 }}
                 style={{
                     backgroundColor: "rgb(255,255,255)",
                     marginTop: "9vh",
                     marginBottom: "2vh",
                     border: "1px solid rgb(212, 212, 213)",
-                    // minHeight: "100vh",
                 }}>
                 <div className="outside">
                     <div className="timeline">
@@ -76,14 +74,16 @@ const TimeLine = () => {
                     </div>
                 </div>
             </Col>
-            <Col
-                span={5}
-                offset={1}
-                style={{
-                    marginTop: "11vh",
-                }}>
-                <WeatherCard />
-            </Col>
+            {window.innerWidth > 500 && (
+                <Col
+                    span={5}
+                    offset={1}
+                    style={{
+                        marginTop: "11vh",
+                    }}>
+                    <WeatherCard />
+                </Col>
+            )}
         </>
     );
 };

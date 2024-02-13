@@ -1,5 +1,7 @@
 .contentArticle {
     line-height: 5vh;
+    font-size: 1vw;
+    letter-spacing: 0.1rem;
 }
 .contentArticle h1 {
     font-size: 1.4rem;
@@ -12,4 +14,53 @@
 }
 .contentArticle h4 {
     font-size: 1.1rem;
+}
+
+.DetailContent-title {
+    color: black;
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.DetailContent-time,
+.DetailContent-wordage,
+.DetailContent-kind {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    border: solid rgb(212, 212, 213) 1px;
+}
+
+@media (max-width: 500px) {
+    .contentArticle {
+        line-height: 1.1rem;
+        font-size: 1rem;
+    }
+    .contentArticle p,
+    .contentArticle pre code {
+        font-size: 0.7rem;
+    }
+    .contentArticle h1 {
+        font-size: 1rem;
+    }
+    .contentArticle h2 {
+        font-size: 0.98rem;
+    }
+    .contentArticle h3 {
+        font-size: 0.94rem;
+    }
+    .contentArticle h4 {
+        font-size: 0.92rem;
+    }
+    .DetailContent-time,
+    .DetailContent-wordage,
+    .DetailContent-kind {
+        margin: 5px auto;
+        font-size: 0.5rem;
+    }
+    .DetailContent-title {
+        font-size: 1.4rem;
+    }
 }

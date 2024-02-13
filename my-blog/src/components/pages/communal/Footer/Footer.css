@@ -1,0 +1,40 @@
+.Footer-friendLink {
+    height: 20vh;
+    background-color: rgb(143, 209, 247);
+    padding: 10px 20px 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.Footer-newBlog {
+    flex-direction: column;
+    height: 20vh;
+    background-color: rgb(143, 209, 247);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.Footer-motto {
+    height: 20vh;
+    background-color: rgb(143, 209, 247);
+    padding: 10px;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+@media (max-width: 500px) {
+    .Footer-friendLink {
+        height: 18.75rem;
+    }
+    .Footer-newBlog {
+        height: 18.75rem;
+    }
+    .Footer-motto {
+        height: 18.75rem;
+    }
+}

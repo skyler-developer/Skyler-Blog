@@ -23,12 +23,7 @@ app.use(express.json());
 //路由中间件
 const router = express.Router();
 
-/* app.use(function (req, res, next) {
-    console.log(req.ip);
-    next();
-}); */
-
-///savearticle post请求，管理系统发布文章
+//savearticle post请求，管理系统发布文章
 router.post("/savearticle", function (req, res) {
     const sqlInsert = "insert into article set ?";
     db.query(
@@ -93,8 +88,8 @@ router.get("/blog/:id", function (req, res) {
 //删除单个文章
 router.get("/deleteblog/:id", function (req, res) {
     const id = req.params.id;
-    const sqlFind = "delete from article where article.id  = ?";
-    db.query(sqlFind, [id], function (err, result) {
+    const sqlDelete = "delete from article where article.id  = ?";
+    db.query(sqlDelete, [id], function (err, result) {
         if (err) {
             return res.send(err);
         }

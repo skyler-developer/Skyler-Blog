@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Row, Col } from "antd";
-
+import { Col } from "antd";
 import { debounce } from "lodash";
+import "./Background.css";
 const imgUrl = [
     "http://www.skyler.fun/weatherWithYou1.webp", //图片一，最左侧
     "http://www.skyler.fun/weatherWithYou2.webp", //图片二，中间
@@ -26,6 +26,7 @@ const Background = () => {
 
     return (
         <Col
+            className="Background-backgroundImage"
             span={24}
             style={{
                 backgroundImage: `url(${imageUrl})`,
