@@ -1,4 +1,4 @@
-const webSocketUrl = "ws://skyler.fun/webSocket";
+const webSocketUrl = "wss://skyler.fun/socket";
 
 export default webSocketUrl;
 

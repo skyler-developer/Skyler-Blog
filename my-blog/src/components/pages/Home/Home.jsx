@@ -15,6 +15,7 @@ import MyCard from "../communal/MyCard/MyCard";
 import { Button, Input } from "antd";
 import baseUrl from "../../../axios/baseUrl";
 import webSocketUrl from "../../../webSocket/webSocketUrl";
+import "./Home.css";
 
 const { TextArea } = Input;
 export default function Home() {
@@ -50,8 +51,9 @@ export default function Home() {
     };
 
     const handelClick = () => {
+        setButtonState(true);
         // const socket = new WebSocket("ws://43.138.43.16:3009");
-        const socket = new WebSocket("wss://skyler.fun/socket");
+        const socket = new WebSocket(webSocketUrl);
 
         socket.addEventListener("open", () => {
             setButtonState(true);
@@ -87,59 +89,44 @@ export default function Home() {
                 <Col span={24} style={{ backgroundColor: "rgb(239, 239, 239)", zIndex: "999" }}>
                     <WaveLineUp />
                 </Col>
-                {windowWidth > 500 && (
-                    <Col
-                        sm={{ span: 12, offset: 6 }}
-                        xs={{ span: 22, offset: 1 }}
+
+                <Col
+                    className="Home-aiAnswerCol"
+                    sm={{ span: 12, offset: 6 }}
+                    xs={{ span: 22, offset: 1 }}>
+                    <div className="Home-aiAnswerTitle">
+                        <div className="Home-aiAnswerTitleIcon"></div>"治愈心情”AI智能问答
+                    </div>
+                    <TextArea
+                        className="Home-textArea"
+                        rows={4}
+                        placeholder="在此输入你的问题"
+                        disabled={buttonState}
+                        onChange={handleChange}
+                    />
+                    <Button
+                        className="Home-questioningButton"
+                        type="primary"
+                        onClick={handelClick}
+                        disabled={buttonState}>
+                        提问
+                    </Button>
+                    <div
                         style={{
-                            backgroundColor: "rgb(255, 255, 255)",
-                            minHeight: "50vh",
-                            marginTop: "20vh",
-                            padding: "2vw",
-                            borderRadius: "1vw",
+                            margin: "5vh 0",
+                            minHeight: "30vh",
+                            padding: "10px 20px",
+                            border: "solid 1px rgb(64, 150, 255)",
+                            fontSize: "1.2rem",
+                            borderRadius: "5px",
+                            fontFamily: "HYLeMiaoTi,STXinwei,Microsoft JhengHei",
                         }}>
-                        <div
-                            style={{
-                                display: "flex",
-                                alignContent: "center",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                fontSize: "1.3rem",
-                                margin: "2vh auto",
-                            }}>
-                            "治愈心情”AI智能问答
-                        </div>
-                        <TextArea
-                            rows={4}
-                            placeholder="在此输入你的问题"
-                            disabled={buttonState}
-                            onChange={handleChange}
-                            style={{ width: "40vw", marginRight: "1vw" }}
-                        />
-                        <Button
-                            type="primary"
-                            style={{ width: "4vw" }}
-                            onClick={handelClick}
-                            disabled={buttonState}>
-                            提问
-                        </Button>
-                        <div
-                            style={{
-                                margin: "5vh 0",
-                                minHeight: "30vh",
-                                padding: "10px 20px",
-                                border: "solid 1px rgb(64, 150, 255)",
-                                fontSize: "1.2rem",
-                                borderRadius: "5px",
-                                fontFamily: "HYLeMiaoTi,STXinwei,Microsoft JhengHei",
-                            }}>
-                            {xingHuoReply}
-                        </div>
-                    </Col>
-                )}
+                        {xingHuoReply}
+                    </div>
+                </Col>
 
                 {newContentArray && (
-                    <Col span={24} style={{ height: "500px", marginTop: "60px" }}>
+                    <Col span={24} style={{ height: "500px", marginTop: "10px" }}>
                         {newContentArray.map((item) => {
                             return <Content key={item.id} contentArrayList={item} />;
                         })}
