@@ -50,7 +50,8 @@ export default function Home() {
     };
 
     const handelClick = () => {
-        const socket = new WebSocket("ws://43.138.43.16:3009");
+        // const socket = new WebSocket("ws://43.138.43.16:3009");
+        const socket = new WebSocket("wss://skyler.fun/socket");
 
         socket.addEventListener("open", () => {
             setButtonState(true);
