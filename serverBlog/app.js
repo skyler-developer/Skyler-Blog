@@ -1,9 +1,13 @@
 const express = require("express");
 
+const WebSocket = require("ws");
+
 //设置cookie中间件
 const cookieParser = require("cookie-parser");
 
 const app = express(); //创建express的示例
+
+const xingHuoWebSocket = new WebSocket.Server({ port: 3008 });
 
 //解决跨域问题
 const cors = require("cors");
@@ -314,6 +318,13 @@ router.post("/modifymotto", function (req, res) {
 });
 
 app.use("/api", router);
+
+xingHuoWebSocket.on("connection", function (answerSocket) {
+    console.log("new connection");
+    answerSocket.on("message", function (message) {
+        sendMsg(message, answerSocket);
+    });
+});
 
 app.listen(3007, function () {
     console.log("api server running at http://127.0.0.1:3007");

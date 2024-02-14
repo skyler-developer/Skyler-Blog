@@ -76,8 +76,6 @@ const Header = ({ headerBackgroundColor, active }) => {
     const [searchResult, setSearchResult] = useState(false);
     const [loadingState, setLoadingState] = useState(false);
 
-    console.log("window.width");
-    console.log(window.innerWidth);
     //导航组件，点击效果
     const onClick = (e) => {
         setCurrent(e.key);

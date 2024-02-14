@@ -14,6 +14,7 @@ import Content from "../communal/Content/Content";
 import MyCard from "../communal/MyCard/MyCard";
 import { Button, Input } from "antd";
 import baseUrl from "../../../axios/baseUrl";
+import webSocketUrl from "../../../webSocket/webSocketUrl";
 
 const { TextArea } = Input;
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
     const [newContentArray, setNewContentArray] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [userQuestion, setUserQuestion] = useState(null);
-    const [xingHuoReply, setXingHuoReply] = useState(null);
+    const [xingHuoReply, setXingHuoReply] = useState("");
     const [buttonState, setButtonState] = useState(false);
     const pageOnChange = (number) => {
         setPageNumber(number);
@@ -45,24 +46,32 @@ export default function Home() {
             });
     }, [pageNumber]);
     const handleChange = (event) => {
-        console.log(event.target.value);
         setUserQuestion(event.target.value);
     };
 
     const handelClick = () => {
-        setXingHuoReply("等待回复中......请耐心等候......");
-        setButtonState(true);
-        axios({
-            method: "post",
-            url: `${baseUrl}/aireply`,
-            data: {
-                question: userQuestion,
-            },
-        }).then((res) => {
-            console.log(res);
-            setXingHuoReply(res.data);
-            setButtonState(false);
+        const socket = new WebSocket("ws://43.138.43.16:3009");
+
+        socket.addEventListener("open", () => {
+            setButtonState(true);
+            socket.send(userQuestion);
         });
+
+        let reply = "";
+        socket.addEventListener("message", (event) => {
+            console.log(event.data);
+            reply += event.data;
+
+            setXingHuoReply(reply);
+        });
+
+        socket.addEventListener("close", () => {
+            setTimeout(() => {
+                setButtonState(false);
+            }, 500);
+        });
+
+        setXingHuoReply("等待回复中......请耐心等候......");
     };
 
     return (
