@@ -89,6 +89,7 @@
         "@babel/plugin-transform-class-properties": "^7.22.5",
         "@babel/plugin-transform-private-methods": "^7.22.5",
         "@babel/plugin-transform-private-property-in-object": "^7.22.11",
+        "@vue/preload-webpack-plugin": "^2.0.0",
         "babel-plugin-prismjs": "^2.1.0"
     },
     "babel": {

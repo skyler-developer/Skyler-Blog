@@ -34,10 +34,10 @@ const MyCard = () => {
                             style={{ width: "30px", height: "30px" }}
                         />
                     </a>,
-                    <a href="https://gitee.com/laihuizhou">
+                    <a href="https://github.com/skyler-developer">
                         <img
-                            alt="giteeIcon"
-                            src="http://www.skyler.fun/gitee.png"
+                            alt="githubIcon"
+                            src="https://www.skyler.fun/GitHub.png"
                             style={{ width: "30px", height: "30px" }}
                         />
                     </a>,

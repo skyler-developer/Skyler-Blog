@@ -1,11 +1,14 @@
-import AboutMe from "../pages/AboutMe/AboutMe"; //关于我组件
-import Note from "../pages/Classify/Note/Note"; //学习笔记组件
-import RandomWriting from "../pages/Classify/RandomWriting/RandomWriting"; //生活随写组件
-import TittleTattle from "../pages/Classify/TittleTattle/TittleTattle"; //技术杂谈组件
-import Home from "../pages/Home/Home"; //首页组件
-import Trends from "../pages/Trends/Trends"; //动态组件
-import DetailContent from "../pages/communal/DetailContent/DetailContent"; //文章详情组件
+import { lazy } from "react";
+import MySuspense from "./MySuspense";
+import Home from "../pages/Home/Home";
 import { Navigate } from "react-router-dom"; //设置默认跳转
+
+const AboutMe = lazy(() => import("../pages/AboutMe/AboutMe")); //关于我组件
+const Note = lazy(() => import("../pages/Classify/Note/Note")); //学习笔记组件
+const RandomWriting = lazy(() => import("../pages/Classify/RandomWriting/RandomWriting")); //生活随写组件
+const TittleTattle = lazy(() => import("../pages/Classify/TittleTattle/TittleTattle")); //技术杂谈组件
+const Trends = lazy(() => import("../pages/Trends/Trends")); //动态组件
+const DetailContent = lazy(() => import("../pages/communal/DetailContent/DetailContent")); //文章详情组件
 
 //设置路由规则
 const routerArr = [
@@ -15,27 +18,51 @@ const routerArr = [
     },
     {
         path: "/classify/note",
-        element: <Note />,
+        element: (
+            <MySuspense>
+                <Note />
+            </MySuspense>
+        ),
     },
     {
         path: "/classify/tittletattle",
-        element: <TittleTattle />,
+        element: (
+            <MySuspense>
+                <TittleTattle />
+            </MySuspense>
+        ),
     },
     {
         path: "/classify/randomwriting",
-        element: <RandomWriting />,
+        element: (
+            <MySuspense>
+                <RandomWriting />
+            </MySuspense>
+        ),
     },
     {
         path: "/trends",
-        element: <Trends />,
+        element: (
+            <MySuspense>
+                <Trends />
+            </MySuspense>
+        ),
     },
     {
         path: "/about",
-        element: <AboutMe />,
+        element: (
+            <MySuspense>
+                <AboutMe />
+            </MySuspense>
+        ),
     },
     {
         path: "/blog/article/:id",
-        element: <DetailContent />,
+        element: (
+            <MySuspense>
+                <DetailContent />
+            </MySuspense>
+        ),
     },
     {
         path: "/",

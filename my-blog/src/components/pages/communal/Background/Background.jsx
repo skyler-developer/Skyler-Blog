@@ -3,9 +3,9 @@ import { Col } from "antd";
 import { debounce } from "lodash";
 import "./Background.css";
 const imgUrl = [
-    "http://www.skyler.fun/weatherWithYou1.webp", //图片一，最左侧
-    "http://www.skyler.fun/weatherWithYou2.webp", //图片二，中间
-    "http://www.skyler.fun/weatherWithYou3.webp", //图片三，最右侧
+    "/resource/weatherWithYou1.webp", //图片一，最左侧
+    "/resource/weatherWithYou2.webp", //图片二，中间
+    "/resource/weatherWithYou3.webp", //图片三，最右侧
 ];
 const Background = () => {
     const [imageUrl, setImageUrl] = useState(imgUrl[1]);
