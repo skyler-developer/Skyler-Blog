@@ -105,7 +105,7 @@ router.get("/freshtoken", setHeaderAllow, verifyToken, function (req, res) {
     });
 
     res.setHeader("Authorization", `${token}`);
-    // res.setHeader("RefreshToken", `${freshToken}`);
+    res.setHeader("RefreshToken", `${freshToken}`);
     res.status(200).send({
         code: 201,
         message: "token已刷新",
