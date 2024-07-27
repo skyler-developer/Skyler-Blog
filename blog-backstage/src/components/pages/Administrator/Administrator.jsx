@@ -1,24 +1,41 @@
 import React from "react";
 import { useState } from "react";
+import { useAuth } from "../../../token/LoginContext";
 import { Button, Checkbox, Form, Input, Layout } from "antd";
 import MiddleContent from "../../communal/MiddleContent/MiddleContent";
 import LeftHeader from "../../communal/LeftHeader/LeftHeader";
+import { ins } from "../../../axios/baseUrl";
 
 const Login = () => {
+    const { user, setUser } = useAuth();
+
+    const [userInfo, setUserInfo] = useState({
+        username: "",
+        password: "",
+    });
+
     const onFinish = (values) => {
         console.log("Success:", values);
         setUserInfo({
             username: values.username,
             password: values.password,
         });
+        setUser(true);
+        ins({
+            url: "login",
+            method: "post",
+            data: {
+                username: values.username,
+                password: values.password,
+            },
+        }).then((res) => {
+            console.log(res);
+        });
     };
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
     };
-    const [userInfo, setUserInfo] = useState({
-        username: "",
-        password: "",
-    });
+
     return (
         <Form
             name="basic"

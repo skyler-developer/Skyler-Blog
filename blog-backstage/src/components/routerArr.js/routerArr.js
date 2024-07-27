@@ -3,6 +3,8 @@ import { Navigate } from "react-router-dom";
 //导入登录组件
 import Administrator from "../pages/Administrator/Administrator.jsx";
 
+import { RequireAuth } from "../../token/LoginContext.jsx";
+
 //导入博客管理组件
 import AddBlog from "../pages/BlogManage/AddBlog/AddBlog.jsx";
 import ModifyBlog from "../pages/BlogManage/ModifyBlog/ModifyBlog.jsx";
@@ -31,21 +33,37 @@ const routerArr = [
     //博客管理路由规则
     {
         path: "/blogmanage/addblog",
-        element: <AddBlog />,
+        element: (
+            <RequireAuth>
+                <AddBlog />
+            </RequireAuth>
+        ),
     },
     {
         path: "/blogmanage/modifyblog",
-        element: <ModifyBlog />,
+        element: (
+            <RequireAuth>
+                <ModifyBlog />
+            </RequireAuth>
+        ),
     },
 
     //页面管理路由规则
     {
         path: "/pagemanage/pageaboutme",
-        element: <PageAboutMe />,
+        element: (
+            <RequireAuth>
+                <PageAboutMe />
+            </RequireAuth>
+        ),
     },
     {
         path: "/pagemanage/pagefriendlink",
-        element: <PageFriendLink />,
+        element: (
+            <RequireAuth>
+                <PageFriendLink />
+            </RequireAuth>
+        ),
     },
 
     //评论管理路由规则

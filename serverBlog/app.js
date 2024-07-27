@@ -1,14 +1,17 @@
 const express = require("express");
 
+const jwt = require("jsonwebtoken");
+
 const WebSocket = require("ws");
 
 //设置cookie中间件
 const cookieParser = require("cookie-parser");
 
+const util = require("util");
+
 const app = express(); //创建express的示例
 
 const xingHuoWebSocket = new WebSocket.Server({ port: 3008 });
-
 //解决跨域问题
 const cors = require("cors");
 app.use(cors({ credentials: true, origin: true }));
@@ -21,14 +24,96 @@ const sendMsg = require("./communal/xingHuoReply/xingHuoReply"); //讯飞星火A
 
 const db = require("./database/index"); //数据库配置
 
+const secretKey = "skyler"; //用于签名 JWT 的密钥，确保 JWT 没有被篡改
+
 //解析json中间件
 app.use(express.json());
 
 //路由中间件
 const router = express.Router();
 
+// 允许浏览器获取以下两个特殊字段
+function setHeaderAllow(req, res, next) {
+    res.setHeader("Access-Control-Expose-Headers", "Authorization, RefreshToken");
+    next();
+}
+
+router.post("/login", setHeaderAllow, function (req, res) {
+    const { username, password } = req.body;
+    console.log(util.inspect(req.body, { showHidden: false, depth: null }));
+    const sqlFind = "select * from user where username = ? and password = ?";
+    db.query(sqlFind, [username, password], function (err, result) {
+        if (err) {
+            return res.status(400).send({ message: "输入信息有误！" });
+        }
+        if (result.length === 0) {
+            return res.status(408).send({ message: "用户名或密码错误！" });
+        }
+
+        // 统一UTC时间与浏览器时间，浏览器时间比UTC快八个小时
+        const curTime = new Date().getTime() + 8 * 60 * 60 * 1000;
+
+        const token = jwt.sign({ username }, secretKey, {
+            expiresIn: "60s",
+        });
+        const freshToken = jwt.sign({ username }, secretKey, {
+            expiresIn: "1h",
+        });
+
+        res.setHeader("Authorization", `${token}`);
+        res.setHeader("RefreshToken", `${freshToken}`);
+
+        res.status(200).send("receive");
+    });
+});
+
+function verifyToken(req, res, next) {
+    const token = req.headers.authorization;
+
+    // console.log(token);
+    if (!token) {
+        res.status(401).json({ message: "No token provided" });
+        return;
+    }
+
+    jwt.verify(token, secretKey, (err, decoded) => {
+        if (err) {
+            console.log(err);
+            res.status(200).json({
+                code: 401,
+                message: "Invalid token(token过期或失效)",
+            });
+            return;
+        } else {
+            req.user = decoded;
+            console.log(decoded);
+            next();
+        }
+    });
+}
+
+router.get("/getuser", verifyToken, function (req, res) {
+    res.status(200).send("Already logged in");
+});
+
+router.get("/freshtoken", setHeaderAllow, verifyToken, function (req, res) {
+    const token = jwt.sign({ username: "skyler" }, secretKey, {
+        expiresIn: "60s",
+    });
+    const freshToken = jwt.sign({ username: "skyler" }, secretKey, {
+        expiresIn: "1h",
+    });
+
+    res.setHeader("Authorization", `${token}`);
+    // res.setHeader("RefreshToken", `${freshToken}`);
+    res.status(200).send({
+        code: 201,
+        message: "token已刷新",
+    });
+});
+
 //savearticle post请求，管理系统发布文章
-router.post("/savearticle", function (req, res) {
+router.post("/savearticle", verifyToken, function (req, res) {
     const sqlInsert = "insert into article set ?";
     db.query(
         sqlInsert,
