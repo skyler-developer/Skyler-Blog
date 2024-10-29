@@ -17,14 +17,14 @@ let requestObj = {
 const getWebsocketUrl = () => {
     return new Promise((resovle, reject) => {
         // let url = "wss://spark-api.xf-yun.com/v1.1/chat";
-        let url = "wss://spark-api.xf-yun.com/v2.1/chat";
+        let url = "wss://spark-api.xf-yun.com/v3.5/chat";
         let host = "spark-api.xf-yun.com";
         let apiKeyName = "api_key";
         let date = new Date().toGMTString();
         let algorithm = "hmac-sha256";
         let headers = "host date request-line";
         // let signatureOrigin = `host: ${host}\ndate: ${date}\nGET /v1.1/chat HTTP/1.1`;
-        let signatureOrigin = `host: ${host}\ndate: ${date}\nGET /v2.1/chat HTTP/1.1`;
+        let signatureOrigin = `host: ${host}\ndate: ${date}\nGET /v3.5/chat HTTP/1.1`;
         let signatureSha = CryptoJs.HmacSHA256(signatureOrigin, requestObj.APISecret);
         let signature = CryptoJs.enc.Base64.stringify(signatureSha);
 
@@ -130,7 +130,7 @@ const sendMsg = (question, answerSocket) => {
         socket.addEventListener("message", (event) => {
             let data = JSON.parse(event.data);
             // console.log('收到消息！！',data);
-            answerSocket.send(data.payload.choices.text[0].content);
+            answerSocket.send(data.payload?.choices?.text[0]?.content);
             requestObj.sparkResult += data.payload.choices.text[0].content;
             if (data.header.code !== 0) {
                 console.log("出错了", data.header.code, ":", data.header.message);
