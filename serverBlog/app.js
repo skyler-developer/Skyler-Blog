@@ -27,8 +27,7 @@ const db = require("./database/index"); //数据库配置
 const secretKey = "skyler"; //用于签名 JWT 的密钥，确保 JWT 没有被篡改
 
 //解析json中间件
-app.use(express.json());
-
+app.use(express.json({ limit: "50mb" }));
 //路由中间件
 const router = express.Router();
 
@@ -50,9 +49,6 @@ router.post("/login", setHeaderAllow, function (req, res) {
             return res.status(408).send({ message: "用户名或密码错误！" });
         }
 
-        // 统一UTC时间与浏览器时间，浏览器时间比UTC快八个小时
-        const curTime = new Date().getTime() + 8 * 60 * 60 * 1000;
-
         const token = jwt.sign({ username }, secretKey, {
             expiresIn: "60s",
         });
@@ -70,7 +66,6 @@ router.post("/login", setHeaderAllow, function (req, res) {
 function verifyToken(req, res, next) {
     const token = req.headers.authorization;
 
-    // console.log(token);
     if (!token) {
         res.status(401).json({ message: "No token provided" });
         return;
